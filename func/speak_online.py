@@ -1,54 +1,49 @@
 #pip install selenium
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+
 from time import sleep
-
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')
+chrome_options.add_argument('--headless=new')
 chrome_options.headless = True
-
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
 website = r"https://ttsmp3.com/text-to-speech/British2English/"
 driver.get(website)
-
-#copy voice id from inspect element for that webpage
-button_selection = Select(driver.find_element(by=By.ID, value='sprachwahl'))
-button_selection.select_by_visible_text("British English / Brian")
+Buttonselection = Select(driver.find_element(by=By.ID, value='sprachwahl'))
+Buttonselection.select_by_visible_text("British English / Brian")
 
 def Speak(*args):
-    
-    text = ""
+    Text=""
     for i in args:
-        text += i
-    length_oftext = len(str(text))
-    if length_oftext == 0:
+        Text+=i
+    lengthoftext = len(str(Text))
+    if lengthoftext == 0:
         pass
     else:
         print("")
-        print(f"JARVIS: {text}.")
+        print(Fore.CYAN+Text)
         print("")
-        data = str(text)
-        
-        #copy id of text area from inspect element
-        driver.find_element(By.ID, "voicetext").send_keys(data)
+        Data = str(Text)
+        driver.find_element(By.ID, "voicetext").send_keys(Data)
         driver.find_element(By.ID, value="vorlesenbutton").click()
         driver.find_element(By.ID, "voicetext").clear()
-        
-        if length_oftext >= 30:
+        if lengthoftext >= 30:
             sleep(7)
-        elif length_oftext >= 40:
+        elif lengthoftext >= 40:
             sleep(8)
-        elif length_oftext >= 55:
+        elif lengthoftext >= 55:
             sleep(12)
-        elif length_oftext >= 70:
+        elif lengthoftext >= 70:
             sleep(14)
-        elif length_oftext >= 108:
+        elif lengthoftext >= 108:
             sleep(16)
-        elif length_oftext >= 128:
+        elif lengthoftext >= 120:
             sleep(18)
         else:
             sleep(2)
-
-#Speak("hi my name is kartikeya acharya")
