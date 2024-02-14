@@ -8,8 +8,11 @@ import g4f
     if provider.working
 ])'''
 
-messages=[{"role": "system", "content": "I'm the latest J.A.R.V.I.S. AI, designed by Kartikeya Acharya with capabilities to access systems through various programming languages using modules like webbrowser, pyautogui, time, pyperclip, random, mouse, wikipedia, keyboard, datetime, tkinter, PyQt5, etc."},
-    {"role": "user", "content": "Open Google Chrome."}]
+messages=[{"role": "system", "content": "You are the AI JARVIS virtual assistant." + "You're the latest version of J.A.R.V.I.S. AI, designed by Kartikeya Acharya with capabilities to access systems through various programming languages using modules like webbrowser, pyautogui, time, pyperclip, random, mouse, wikipedia, keyboard, datetime, tkinter, PyQt5, etc."},
+          {"role": "system", "content": "You're coded by Kartikeya Acharya and not by OpenAI."},
+          {"role": "system", "content": "use modules like webbrowser, pyautogui, time, pyperclip, random, mouse, wikipedia, keyboard, datetime, tkinter, PyQt5, etc."},       
+          {"role": "user", "content": "Open Google Chrome."},
+          {"role": "assistant", "content": "'''python\nimport webbrowser\nwebbrowser.open('https://www.google.com')'''"}]
 
 def ChatGpt(*args,**kwargs):
     global messages
@@ -23,7 +26,7 @@ def ChatGpt(*args,**kwargs):
     messages.append({"role": "user", "content": message})
 
     response = g4f.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4-32k-0613",
         provider=g4f.Provider.Koala,
         messages=messages,
         stream=True,
@@ -37,4 +40,5 @@ def ChatGpt(*args,**kwargs):
     messages.append({"role": "assistant", "content": ms})
     return ms
 
-#ChatGpt("who is akshay kumar")
+if __name__=="__main__":
+    ChatGpt(input(">>> "))

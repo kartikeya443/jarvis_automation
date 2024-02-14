@@ -27,7 +27,7 @@ def Speak(*args):
         pass
     else:
         print("")
-        print(Fore.CYAN+Text)
+        print(Fore.CYAN)
         print("")
         Data = str(Text)
         driver.find_element(By.ID, "voicetext").send_keys(Data)
