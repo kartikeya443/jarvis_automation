@@ -1,5 +1,9 @@
 This is a voice-controlled virtual assistant - "JARVIS", developed by Kartikeya Acharya.
 
+An AI assistant executing tasks through speech and responding in speech also has system control and task management abilities.
+Trained using T4 GPU via numerous epochs and data of over 75k queries, it is quick and responsive in solving a variety of queries and
+handling general tasks (majorly related to Chrome browser).
+
 Note:
 
 Use passcode "69" to execute successfully.
