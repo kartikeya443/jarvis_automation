@@ -12,3 +12,12 @@ For connecting to the T4 GPU server, responsible for running the LLM satisfactor
 
 Run all codes in this collab notebook on your system browser before executing main.py:
 https://colab.research.google.com/drive/14SKHKBLJXfxT6gfe8fr7UDR1UIUq8Pae?usp=sharing
+
+## Run Application
+1. **_Install project dependencies_**
+```sh
+pip install -r requirements.txt
+```
+2. **_Run the application_**
+```sh
+python main.py
